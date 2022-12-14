@@ -1,0 +1,15 @@
+ cat /root/bigdataprogrammers/input_files/sample_1.csv
+  hadoop fs -mkdir bdp/ld_csv_hv
+ hadoop fs -mkdir bdp/ld_csv_hv/ip
+  hadoop fs -put /root/bigdataprogrammers/input_files/(tornadoes.csv bdp/ld_csv_hv/ip/
+  
+   hadoop fs -ls bdp/ld_csv_hv/ip/
+   CREATE SCHEMA IF NOT EXISTS bdp;
+
+CREATE EXTERNAL TABLE IF NOT EXISTS bdp.hv_csv_table
+(id STRING,Code STRING)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION 'hdfs://sandbox.hortonworks.com:8020/user/root/bdp/ld_csv_hv/ip';
+ select * from bdp.hv_csv_table;

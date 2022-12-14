@@ -1,0 +1,31 @@
+CREATE EXTERNAL TABLE IF NOT EXISTS `client_bank_details` (
+`client_num` string,
+`attrition_flag` string,
+`customer_age` string,
+`gender` string,
+`dependent_count` string,
+`education_level` string,
+`marital_atatus` string,
+`Income_xategory` string,
+`card_xategory` string,
+`months_on_book` string,
+`total_relationship_count` string,
+`months_inactive_12_mon` string,
+`contacts_count_12_mon` string,
+`credit_cimit` string,
+`total_revolving_bal` string,
+`avg_open_to_buy` string,
+`total_amt_chng_q4_q1` string,
+`total_trans_amt` string,
+`total_trans_ct` string,
+`total_ct_chng_q4_q1` string,
+`avg_utilization_ratio` string
+ )
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+WITH SERDEPROPERTIES (
+   "separatorChar" = ",",
+    "quoteChar"    =  "\""
+)
+STORED AS TEXTFILE
+LOCATION '/data/client_bank_details'
+TBLPROPERTIES ("skip.header.line.count"="1");
